@@ -1,0 +1,30 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}All the things{% endblock subtitle %}
+
+{% block content %}
+<ul>
+    {% for task in tasks %}
+        <li>
+        {% if task.performed %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ task.name }}</a>
+              <small class="text-muted">Done on {{ task.performed }} by {{ task.performed_by.name }}</small>
+            </div>
+          </div>
+        </article>
+       {% else %}
+            <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ task.name }} Undone</a>
+            </div>
+          </div>
+        </article>
+        {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
